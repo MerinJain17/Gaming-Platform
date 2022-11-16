@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+    <title> Random  </title>
+    {% load static %}
+    <link rel="stylesheet"  href="static/css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!----------------------------------- NAVIGATION BAR -------------------------->
+
+ <div class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <div class="container-fluid">
+       <a class="navbar-brand text-warning" href="#"><b>DASHLANE</b></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+         <ul class="navbar-nav text-white ml-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/random">Random-Game</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/play">Play-Zone</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/about">About </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/contact">Feedback </a>
+           </li>
+   
+         </ul>  
+         <img src="/static/images/menu.png"  width="30px" height="30px" style="background-color:;">
+       </div>
+     </div>
+   </nav>
+   <!----------------------------HTML---------------------------------->
+
+   <div class="container-fluid">
+    <div class="wheel">
+      <h1 id="headerNames">?</h1>
+        <div class="button" id="startButton">start</div>
+        <div class="button" id="stopButton"> stop </div>
+        <div class="button" id="stopButton1"><a href="/play"> LETS PLAY</a></div>
+        <div id="timerWrapper">Time left: <span id="timer"></span></div>
+        <div id="timesUp">
+      Time's Up!
+      <a href="/random">RESET</a>
+        </div>  
+    </div>
+  </div>
+
+   <!----------------------------JAVA SCRIPT---------------------------------->
+
+   <script>
+    "use strict";
+   
+   // Change to false if you don't want a timer
+   const showTimer = true;
+   
+   // Set timer countdown time here in minutes : seconds format
+   const time = 0 + ":" + 3;
+   
+   // Add list of names here
+   const namesList = [
+       'MAZE GAME',
+       'MEMORY CARD GAME',
+       'NINJA CUBE GAME', 
+       'TIC-TAC-TOE',
+       'ROCK-PAPER-SCISSOR',
+       'TRY AGAIN',
+       'SNAKE GAME'
+   ];
+   
+   // Default variables
+   let i = 0;
+   let x = 0;
+   let intervalHandle = null;
+   const startButton = document.getElementById('startButton');
+   const stopButton = document.getElementById('stopButton');
+   const headerOne = document.getElementById('headerNames');
+   const timesUp = document.getElementById('timesUp');
+   const timerWrapper = document.getElementById('timerWrapper');
+   const timer = document.getElementById('timer');
+   
+   // Optional countdown timer
+   // Add zero in front of numbers < 10
+   function checkSecond(sec) {
+     if (sec < 10 && sec >= 0) {
+           sec = "0" + sec;
+       } 
+     if (sec < 0) {
+           sec = "59";
+       }
+     return sec;
+   }
+   
+   const startTimer = function() {
+     const presentTime = timer.innerHTML;
+     const timeArray = presentTime.split(/[:]+/);
+     let m = timeArray[0];
+     let s = checkSecond((timeArray[1] - 1));
+       
+     if (s==59) {
+           m = m-1;
+       }
+     if (m < 0) {
+           timesUp.style.display = "block";
+       }
+     
+     timer.innerHTML = m + ":" + s;
+       
+       setTimeout(startTimer, 1000);
+   }
+   
+   // Start or stop the name shuffle on button click
+   startButton.addEventListener('click', function() {
+       this.style.display = "none";
+       stopButton.style.display = "block";
+       intervalHandle = setInterval(function () {
+           headerNames.textContent = namesList[i++ % namesList.length];
+       }, 50);
+       if (showTimer===true) {
+           timerWrapper.classList.remove('visible');
+       }
+   });
+   stopButton.addEventListener('click', function() {
+       this.style.display = "none";
+       startButton.style.display = "block";
+       clearInterval(intervalHandle);
+       timer.innerHTML = time;
+       if (showTimer===true) {
+           timerWrapper.classList.add('visible');
+       }
+       startTimer();
+   });
+   
+   // Allow use of spacebar to start/stop name shuffle
+   document.body.onkeyup = function(e) {
+       if (e.keyCode == 32) {
+           if (x%2===0) {
+               startButton.style.display = "none";
+               stopButton.style.display = "block";
+               intervalHandle = setInterval(function () {
+                   headerNames.textContent = namesList[i++ % namesList.length];
+               }, 50);
+               if (showTimer===true) {
+                   timerWrapper.classList.remove('visible');
+                  
+               }
+           } else {
+               startButton.style.display = "block";
+               stopButton.style.display = "none";
+               clearInterval(intervalHandle);
+               timer.innerHTML = time;
+               if (showTimer===true) {
+                   timerWrapper.classList.add('visible');
+               }
+               startTimer();
+           }
+           x++; 
+       }
+   } 
+   
+   // Blinking warning
+   var backgroundInterval = setInterval(function() {
+     timesUp.classList.toggle("backgroundRed");
+   }, 1000)
+   
+   
+   
+   
+   </script>
+
+   <!----------------------------FOOTER---------------------------------->
+   <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="f-col-1">
+           <h3>Download Our App</h3>
+           <p>Download App for android and ios mobile phone. </p>
+           <div class="app-logo">
+           <img src="/static/images/play-store.png">
+           <img src="/static/images/app-store.png">
+           </div>
+        </div>
+  
+        <div class="f-col-2">
+           <h3>DASHLANE</h3>
+           <p>Our aim is to create sustainable product.</p> 
+            <p>and to create a platform to relax chill and play games </p>
+        </div>
+  
+        <div class="f-col-3">
+          <h3>Useful Link</h3>
+            <ul>
+              <li>Cupons</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+        </div>
+  
+        <div class="f-col-4">
+          <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+      <p class="copyright">Copyright 2020 - Dashlane</p>
+  </div>
+</body>
+</html>

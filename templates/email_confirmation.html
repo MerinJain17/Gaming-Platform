@@ -1,0 +1,15 @@
+{% autoescape off %}
+
+WELCOME TO  DASHLANE 
+
+HELLO  {{  name   }} !
+
+please confirm your email by clicking on the following link.
+
+please click on either of the link:
+
+confirmation link:http://{{domain}}{% url 'activate' uidb64=uid  token=token %}
+ 
+
+
+{% endautoescape %}

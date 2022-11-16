@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <title> Login Page </title>
+    {% load static %}
+    <link rel="stylesheet"  href="static/css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!----------------------------------- NAVIGATION BAR -------------------------->
+
+ <div class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <div class="container-fluid">
+       <a class="navbar-brand text-warning" href="#"><b>DASHLANE</b></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+         <ul class="navbar-nav text-white ml-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/random">Random-Game</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/play">Play-Zone</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/about">About </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/contact">Feedback </a>
+           </li>
+   
+         </ul>  
+         <img src="/static/images/menu.png"  width="30px" height="30px" style="background-color:;">
+       </div>
+     </div>
+   </nav>
+   
+<!----------------------------------- HTML ---------------------------------->
+
+<section class="wrapper">
+    <div class="side left"> 
+      <div class="image part1"> 
+      </div>
+    </div>
+      <div class="side right">
+        <div class="image part2"> 
+          <div class="caption">
+            <artical>
+            
+            <h1>Congratulation! </h1>
+            
+            <h4>you have successfully logged in.</h4></br>
+            <p>In doubt what to play! lets go to..</br></br>
+            <a href="/random" class="btn  btn-lg  "role="button">Random Room</a></p></br>
+            </br><p>See what you want to play! lets go to..</br></br>
+            <a href="/play" class="btn  btn-lg  "role="button">Play Room</a></p>
+            </artical>
+          </div>
+        </div>
+      </div>
+</section>
+<!----------------------------FOOTER---------------------------------->
+<div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="f-col-1">
+           <h3>Download Our App</h3>
+           <p>Download App for android and ios mobile phone. </p>
+           <div class="app-logo">
+           <img src="/static/images/play-store.png">
+           <img src="/static/images/app-store.png">
+           </div>
+        </div>
+  
+        <div class="f-col-2">
+           <h3>DASHLANE</h3>
+           <p>Our aim is to create sustainable product.</p> 
+            <p>and to create a platform to relax chill and play games </p>
+        </div>
+  
+        <div class="f-col-3">
+          <h3>Useful Link</h3>
+            <ul>
+              <li>Cupons</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+        </div>
+  
+        <div class="f-col-4">
+          <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+      <p class="copyright">Copyright 2020 - Dashlane</p>
+  </div>
+</body>
+</html>
+

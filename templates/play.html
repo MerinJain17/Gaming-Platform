@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+    <title> Play-Zone</title>
+    {% load static %}
+    <link rel="stylesheet"  href="static/css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!----------------------------------- NAVIGATION BAR -------------------------->
+
+ <div class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <div class="container-fluid">
+       <a class="navbar-brand text-warning" href="#"><b>DASHLANE</b></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+         <ul class="navbar-nav text-white ml-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/random">Random-Game</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/play">Play-Zone</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/about">About </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/contact">Feedback </a>
+           </li>
+   
+         </ul>  
+         <img src="/static/images/menu.png"  width="30px" height="30px" style="background-color:;">
+       </div>
+     </div>
+   </nav>
+   
+   <!----------------------------------- HTML ---------------------------------->
+
+    <div class="allgames">
+        <div class="row row-1">
+            <div class="row row-2">
+                <div class="col-4">
+                <img src="/static/images/gi2.jpeg" >
+                <h5>Maze Game</h5>
+                <div class="rating">
+                    <a href="/game1" class="btn  btn-lg  "role="button">PLAY GAME</a>
+                </div>
+                </div>
+                
+  
+                <div class="col-4">
+                <img src="/static/images/gp1.jpeg" >
+                <h5>Memory Game</h5>
+                <div class="rating">
+                    <a href="/game2" class="btn  btn-lg " role="button">PLAY GAME</a>
+                </div>
+                
+                </div>
+  
+                <div class="col-4">
+                <img src="/static/images/gi4.jpeg">
+                <h5>Ninja Cube Game</h5>
+                <div class="rating">
+                    <a href="/game3" class="btn  btn-lg " role="button">PLAY GAME</a>
+                </div>
+                
+                </div>
+  
+                <div class="col-4">
+                <img src="/static/images/gp8.jpeg">
+                <h5>Rock-Paper-Scissor</h5>
+                <div class="rating">
+                    <a href="/game4" class="btn  btn-lg " role="button">PLAY GAME</a>
+                </div>
+                </div>
+            
+                <div class="col-4">
+                <img src="/static/images/gp9.jpeg">
+                <h5>Tic-Tac-Toe </h5>
+                <div class="rating">
+                    <a href="/game5" class="btn  btn-lg " role="button" >PLAY GAME</a>
+                </div>
+                </div>
+  
+                <div class="col-4">
+                <img src="/static/images/gi5.jpeg" >
+                <h5>Hungry Snake Game </h5>
+                <div class="rating">
+                    <a href="/game6" class="btn  btn-lg "role="button" aria-disabled="true">PLAY GAME</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!----------------------------FOOTER---------------------------------->
+   <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="f-col-1">
+           <h3>Download Our App</h3>
+           <p>Download App for android and ios mobile phone. </p>
+           <div class="app-logo">
+           <img src="/static/images/play-store.png">
+           <img src="/static/images/app-store.png">
+           </div>
+        </div>
+  
+        <div class="f-col-2">
+           <h3>DASHLANE</h3>
+           <p>Our aim is to create sustainable product.</p> 
+            <p>and to create a platform to relax chill and play games </p>
+        </div>
+  
+        <div class="f-col-3">
+          <h3>Useful Link</h3>
+            <ul>
+              <li>Cupons</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+        </div>
+  
+        <div class="f-col-4">
+          <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+      <p class="copyright">Copyright 2020 - Dashlane</p>
+  </div>
+</body>
+</html>

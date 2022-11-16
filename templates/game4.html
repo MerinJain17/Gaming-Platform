@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+    <title> Rock Paper Scissors </title>
+    {% load static %}
+    <link rel="stylesheet"  href="static/css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!----------------------------------- NAVIGATION BAR -------------------------->
+
+ <div class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <div class="container-fluid">
+       <a class="navbar-brand text-warning" href="#"><b>DASHLANE</b></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+         <ul class="navbar-nav text-white ml-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/random">Random-Game</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/play">Play-Zone</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/about">About </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/contact">Feedback </a>
+           </li>
+   
+         </ul>  
+         <img src="/static/images/menu.png"  width="30px" height="30px" style="background-color:;">
+       </div>
+     </div>
+   </nav>
+   
+   <!----------------------------------- HTML ---------------------------------->
+    <div class="game4">
+        <header >
+            <h1>Rock Paper Scissors</h1>
+        </header>
+
+        <section class="score-board">
+            <div class="badge" id="comp-label">Computer</div>
+            <div class="badge" id="user-label">User</div>
+            <span id="user-score">0</span>:<span id="computer-score">0</span>
+            
+        </section>
+
+        <div class="result">
+            <p id="round__result"></p>
+            <p id="result__text">To begin choose one from rock, paper or scissor</p>
+        </div>
+
+        <div class="choices">
+            <div class="choice" id="rock">
+                <img src="https://tejeshwer25.github.io/Rock_Paper_scissors/images/rock.png" />
+            </div>
+
+            <div class="choice" id="paper">
+                <img src="https://tejeshwer25.github.io/Rock_Paper_scissors/images/paper.png" />
+            </div>
+
+            <div class="choice" id="scissor">
+                <img src="https://tejeshwer25.github.io/Rock_Paper_scissors/images/scissor.png" />
+            </div>
+
+        <div class="action_text">
+            <p></p>
+        </div>
+    </div>
+</div>
+   <!----------------------------------JAVA SCRIPT ---------------------------------->
+
+
+   <script>
+    const userScore_span = document.getElementById('user-score');
+    const computerScore_span = document.getElementById('computer-score');
+    const resultText_p = document.getElementById('result__text');
+    const roundResult_p = document.getElementById('round_result');
+    const rock_div = document.getElementById('rock');
+    const paper_div = document.getElementById('paper');
+    const scissors_div = document.getElementById('scissor');
+
+    let userScore = 0;
+    let computerScore = 0;
+
+    rock_div.onclick = (e) => {
+        let result = startGame('rock');
+        result_text();
+        resultStyle(result, rock_div);
+    };
+    paper_div.onclick = (e) => {
+        let result = startGame('paper');
+        result_text();
+        resultStyle(result, paper_div);
+    };
+    scissors_div.onclick = (e) => {
+        let result = startGame('scissor');
+        result_text();
+        resultStyle(result, scissors_div);
+    };
+    
+    function startGame(userChoice) {
+        let compChoice = computerChoice(); 
+    
+        if(userChoice===compChoice) {
+            resultText_p.textContent = "It's a draw!!";
+            return 'draw';
+        } 
+        else if((userChoice==='rock' && compChoice==='scissor') || (userChoice==='paper' && compChoice==='rock') || (userChoice==='scissor' && compChoice==='paper')) {
+            userScore++;
+            userScore_span.textContent = userScore;
+            resultText_p.textContent = `Computer tried to block your ${userChoice} with ${compChoice} and failed... You Won 🔥🔥`;
+            return 'win';
+        }
+        else if((userChoice==='rock' && compChoice==='paper') || (userChoice==='paper' && compChoice==='scissor') || (userChoice==='scissor' && compChoice==='rock')) {
+            computerScore++;
+            computerScore_span.textContent = computerScore;
+            resultText_p.textContent = `Computer blocked your ${userChoice} with ${compChoice} successfully... You Lost 😭😭` ;
+            return 'loss';
+        }
+    }
+    function computerChoice() {
+        let choice = ['rock', 'paper', 'scissor']
+        let computerChoice = Math.floor(Math.random() * 3);
+        return choice[computerChoice];
+    }
+    
+    function result_text() {
+        if(userScore >=10) {
+            roundResult_p.textContent = "You won previous round";
+            userScore = 0;
+            computerScore = 0;
+        } else if(computerScore >= 10) {
+            roundResult_p.textContent = "You lost previous round";
+            userScore = 0;
+            computerScore = 0;
+        } 
+    
+        setTimeout(() => {roundResult_p.textContent = ""}, 5000)
+    }
+    
+    function resultStyle(result, e) {
+        if(result === 'win') {
+            e.classList.add('win');
+            setTimeout(() => {e.classList.remove('win')}, 1000)
+        } else if (result === 'draw') {
+            e.classList.add('draw');
+            setTimeout(() => {e.classList.remove('draw')}, 1000)
+        } else {
+            e.classList.add('lost');
+            setTimeout(() => {e.classList.remove('lost')}, 1000)
+        }
+    }
+    
+</script>
+</body>
+</html>

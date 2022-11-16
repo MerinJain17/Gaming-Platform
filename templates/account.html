@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <title> Account Page </title>
+    {% load static %}
+    <link rel="stylesheet"  href="static/css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!----------------------------------- NAVIGATION BAR -------------------------->
+
+ <div class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+     <div class="container-fluid">
+       <a class="navbar-brand text-warning" href="#"><b>DASHLANE</b></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+         <ul class="navbar-nav text-white ml-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/random">Random-Game</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/play">Play-Zone</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/about">About </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" href="/contact">Feedback </a>
+           </li>
+          
+         </ul>  
+         
+       </div>
+     </div>
+   </nav>
+<!----------------------------------- HTML ---------------------------------->
+<div class="container-fluid">
+    <body oncontextmenu='return false' class='snippet-body'>
+        <div class="row">
+          <div class="col-md-6 mx-auto p-0">
+              <div class="card">
+                  <div class="login-box">
+                      <div class="login-snip"> 
+                        <form action="/account" method="post">
+                         {% csrf_token %}
+                         <div id="errorMsg"></div>
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> 
+                            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                          <div class="login-space">
+                              <div class="login">
+                                <form class="login" name="loginForm" onsubmit="return validateLoginForm()" method="POST">
+                                 {% csrf_token %}
+                                  <div class="group"> 
+                                     <label for="username1" class="label">Username</label>
+                                     <input id="username1"  name="username1" type="text" class="input" placeholder="Enter your username"> 
+                                  </div>
+      
+                                  <div class="group"> 
+                                    <label for="password1" class="label">Password</label> 
+                                    <input id="password1" name="password1" type="password" class="input" data-type="password" placeholder="Enter your password"> 
+                                  </div>
+      
+                                  <div class="group"> 
+                                    <input id="check" type="checkbox" class="check" checked> 
+                                    <label for="check"><span class="icon"></span> Keep me Signed in</label> 
+                                  </div>
+      
+                                  <div class="group"> 
+                                      <button type="submit" class="button"><a href="/">Sign up </a></button>
+
+                                  </div>
+      
+                                  <div class="hr"></div>
+      
+                                  <div class="foot"> <label for="tab-2" style="color:#ffb121">Not a Member?</label> </div>
+                              
+                              </div>
+                            
+                              <div class="sign-up-form">
+                                  <div class="group"> 
+                                    <label for="username" class="label">Username</label> 
+                                    <input id="username" name="username" type="text" class="input" placeholder="Create your Username"> 
+                                  </div>
+      
+                                  <div class="group"> 
+                                    <label for="password" class="label">Password</label> 
+                                    <input id="password"  name="password" type="password" class="input" data-type="password" placeholder="Create your password"> 
+                                  </div>
+                                  
+                                  <div class="group"> 
+                                    <label for="phone" class="label">Phone Number</label> 
+                                    <input id="phone" name="phone" type="phone" class="input" data-type="integer" placeholder="Enter your phone Number"> 
+                                  </div>
+                                  <div class="group"> 
+                                    <label for="email" class="label">Email Address</label> 
+                                    <input id="email" name="email" type="text" class="input" placeholder="Enter your email address"> 
+                                  </div>
+                                  
+                                  <div class="group"> 
+                                   <button type="submit" class="button">Sign up </button>
+                                  </div>
+                                  
+                                  <div class="hr">
+                                  </div>
+                                  <div class="foot text-warning"> <label for="tab-1" >Already Member?</label> </div>
+                                
+                              </div>
+                          </div>
+                        </form>  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+</div>
+</body>
+<!----------------------------FOOTER---------------------------------->
+<div class="footer1">
+    <div class="container">
+      <div class="row">
+        <div class="f-col-1">
+           <h3>Download Our App</h3>
+           <p>Download App for android and ios mobile phone. </p>
+           <div class="app-logo">
+           <img src="/static/images/play-store.png">
+           <img src="/static/images/app-store.png">
+           </div>
+        </div>
+  
+        <div class="f-col-2">
+           <h3>DASHLANE</h3>
+           <p>Our aim is to create sustainable product.</p> 
+            <p>and to create a platform to relax chill and play games </p>
+        </div>
+  
+        <div class="f-col-3">
+          <h3>Useful Link</h3>
+            <ul>
+              <li>Cupons</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+        </div>
+  
+        <div class="f-col-4">
+          <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+      <p class="copyright">Copyright 2020 - Dashlane</p>
+  </div>
+  
+<!----------------------------JavaScript---------------------------------->  
+<script>
+  function validateLoginForm() {
+    var username1 = document.getElementById("username1").value;
+    var password1 = document.getElementById("password1").value;
+
+    if (username1 == "" || password1 == "") {
+      document.getElementById("errorMsg").innerHTML = "Please fill the required fields"
+      return false;
+    }
+
+    else if (password.length < 5) {
+      document.getElementById("errorMsg").innerHTML = "Your password must include atleast 5 characters"
+      return false;
+    }
+    else {
+      alert("Successfully logged in");
+      return true;
+    }
+  }
+</script>
+</body>
+</html> 
